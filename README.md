@@ -1,6 +1,6 @@
 # Anti-Distraction YouTube — uBlock Origin filter list
 
-A [uBlock Origin](https://github.com/gorhill/uBlock) filter list that removes the parts of YouTube that pull your attention away from the videos you actually came to watch: **Shorts, Playables, AI features, auto-dubbed audio, Premium upsells, and shopping/merch shelves**. It covers both the desktop site (`www.youtube.com`) and the mobile site (`m.youtube.com`).
+A [uBlock Origin](https://github.com/gorhill/uBlock) filter list that removes the parts of YouTube that pull your attention away from the videos you actually came to watch: **Shorts, Playables, AI features, Premium upsells, and shopping/merch shelves**. It covers both the desktop site (`www.youtube.com`) and the mobile site (`m.youtube.com`).
 
 ## Add to uBlock Origin
 
