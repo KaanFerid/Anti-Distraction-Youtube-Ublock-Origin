@@ -1,4 +1,4 @@
-# YouTube Cleanup — uBlock Origin filter list
+# Anti-Distraction YouTube — uBlock Origin filter list
 
 A [uBlock Origin](https://github.com/gorhill/uBlock) filter list that removes the parts of YouTube that pull your attention away from the videos you actually came to watch: **Shorts, Playables, AI features, auto-dubbed audio, Premium upsells, and shopping/merch shelves**. It covers both the desktop site (`www.youtube.com`) and the mobile site (`m.youtube.com`).
 
@@ -6,7 +6,7 @@ A [uBlock Origin](https://github.com/gorhill/uBlock) filter list that removes th
 
 ### One-click install
 
-> **[➕ Add to uBlock Origin](https://subscribe.adblockplus.org/?location=https%3A%2F%2Fraw.githubusercontent.com%2FYOUR_USERNAME%2FYOUR_REPO%2Fmain%2Fyoutube-cleanup-filters.txt&title=YouTube%20Cleanup)**
+> **[➕ Add to uBlock Origin](https://subscribe.adblockplus.org/?location=https%3A%2F%2Fraw.githubusercontent.com%2FKaanFerid%2FAnti-Distraction-Youtube-Ublock-Origin%2Fmain%2Fyoutube-cleanup-filters.txt&title=Anti-Distraction%20YouTube)**
 
 1. Make sure uBlock Origin is installed in your browser.
 2. Click the link above.
@@ -22,7 +22,7 @@ If nothing happens (for example, because several content blockers are installed)
 4. Paste this link into the box:
 
    ```
-   https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/youtube-cleanup-filters.txt
+   https://raw.githubusercontent.com/KaanFerid/Anti-Distraction-Youtube-Ublock-Origin/main/youtube-cleanup-filters.txt
    ```
 
 5. Click **Apply changes**.
@@ -46,7 +46,7 @@ The auto-dub section uses scriptlets that may need to be trusted. If uBlock Orig
 - **Subscribed list:** open the Dashboard → **Settings**, turn on **I am an advanced user**, click the gear icon next to it to open the advanced settings, and add this to `trustedListPrefixes`:
 
   ```
-  https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/
+  https://raw.githubusercontent.com/KaanFerid/Anti-Distraction-Youtube-Ublock-Origin/
   ```
 
 - **"My filters":** turn on **Allow custom filters requiring trust** in uBlock Origin's settings.
@@ -75,7 +75,7 @@ Where possible, the rules hide the whole card around a Shorts-marked video (not 
 ## Known limitations
 
 - **Videos marked as AI** can't be hidden by this list. YouTube's "altered or synthetic content" label isn't shown on thumbnails in feeds, so there is nothing for a filter to match. Channel blocklists or dedicated extensions are the practical option.
-- **YouTube changes its page structure often.** Rules can stop working after a redesign. If something reappears, please [open an issue](../../issues).
+- **YouTube changes its page structure often.** Rules can stop working after a redesign. If something reappears, please [open an issue](https://github.com/KaanFerid/Anti-Distraction-Youtube-Ublock-Origin/issues).
 - **Text-based rules** (for example the "Ask" and "Summary" matches) rely on English labels and may not match other interface languages.
 - **Rules marked "Unverified"** inside the list are best guesses and may need adjusting.
 
@@ -120,4 +120,4 @@ This list builds on the work of others:
 
 ## License
 
-Add your chosen license here (for example MIT). Check that it is compatible with the licenses of the lists credited above, and keep the attribution to Fanboy's list.
+See the [LICENSE](LICENSE) file. Selectors adapted from the lists credited above remain subject to their original licenses.
