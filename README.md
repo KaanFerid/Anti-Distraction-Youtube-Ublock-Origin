@@ -79,23 +79,6 @@ Where possible, the rules hide the whole card around a Shorts-marked video (not 
 - **Text-based rules** (for example the "Ask" and "Summary" matches) rely on English labels and may not match other interface languages.
 - **Rules marked "Unverified"** inside the list are best guesses and may need adjusting.
 
-## Optional: always open the desktop site on mobile
-
-uBlock Origin can't redirect `m.youtube.com` to `www.youtube.com`, but a userscript (Violentmonkey or Tampermonkey) can:
-
-```js
-// ==UserScript==
-// @name         m.youtube.com → www.youtube.com
-// @match        https://m.youtube.com/*
-// @run-at       document-start
-// @grant        none
-// ==/UserScript==
-
-location.replace(location.href.replace(/^https:\/\/m\.youtube\.com/, 'https://www.youtube.com'));
-```
-
-On a phone, also turn on your browser's **Desktop site** option for YouTube. Otherwise YouTube sends mobile browsers back to `m.youtube.com` and the page loops.
-
 ## Reporting problems
 
 If something still shows up (or something it shouldn't hide disappears), open an issue with:
