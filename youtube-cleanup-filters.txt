@@ -1,0 +1,143 @@
+! Title: YouTube cleanup (Shorts, Playables, AI features, Premium upsells, merch) - desktop + mobile web
+! Paste into uBlock Origin > Dashboard > My filters, then click "Apply changes".
+! The auto-dub section needs: Settings > "Allow custom filters requiring trust".
+
+! =====================================================================
+! SHORTS
+! =====================================================================
+
+! ---------- Block the Shorts pages themselves ----------
+||youtube.com/shorts/$document
+||youtube.com/shorts$document
+
+! ---------- DESKTOP: anything carrying the Shorts badge -> hide the whole card ----------
+youtube.com##ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]:upward(ytd-video-renderer)
+youtube.com##ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]:upward(ytd-grid-video-renderer)
+youtube.com##ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]:upward(ytd-compact-video-renderer)
+youtube.com##ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]:upward(ytd-rich-item-renderer)
+
+! ---------- DESKTOP: shelves ----------
+youtube.com##ytd-reel-shelf-renderer
+youtube.com##ytd-rich-shelf-renderer[is-shorts]
+youtube.com##ytd-rich-shelf-renderer[is-shorts]:upward(ytd-rich-section-renderer)
+youtube.com##ytd-rich-item-renderer ytm-shorts-lockup-view-model:upward(ytd-rich-item-renderer)
+youtube.com##ytm-shorts-lockup-view-model-v2:upward(grid-shelf-view-model)
+youtube.com##grid-shelf-view-model:has(a[href^="/shorts/"])
+
+! ---------- DESKTOP: items linking to /shorts/ ----------
+youtube.com##ytd-reel-item-renderer
+youtube.com##ytd-video-renderer:has(a[href^="/shorts/"])
+youtube.com##ytd-grid-video-renderer:has(a[href^="/shorts/"])
+youtube.com##ytd-rich-item-renderer:has(a[href^="/shorts/"])
+youtube.com##ytd-compact-video-renderer:has(a[href^="/shorts/"])
+youtube.com##yt-lockup-view-model:has(a[href^="/shorts/"])
+
+! ---------- DESKTOP: sidebar (expanded + collapsed/tablet) ----------
+youtube.com##ytd-guide-entry-renderer:has(a[href^="/shorts"])
+youtube.com##ytd-mini-guide-entry-renderer:has(a[href^="/shorts"])
+youtube.com##ytd-mini-guide-entry-renderer[aria-label="Shorts"]
+
+! ---------- MOBILE (m.youtube.com): anything carrying the Shorts badge ----------
+m.youtube.com##ytm-thumbnail-overlay-time-status-renderer[data-style="SHORTS"]:upward(ytm-video-with-context-renderer)
+m.youtube.com##ytm-thumbnail-overlay-time-status-renderer[data-style="SHORTS"]:upward(ytm-compact-video-renderer)
+m.youtube.com##ytm-thumbnail-overlay-time-status-renderer[data-style="SHORTS"]:upward(ytm-rich-item-renderer)
+m.youtube.com##ytm-thumbnail-overlay-time-status-renderer[data-style="SHORTS"]:upward(ytm-item-section-renderer)
+
+! ---------- MOBILE: shelves and sections ----------
+m.youtube.com##ytm-reel-shelf-renderer
+m.youtube.com##ytm-shorts-lockup-view-model:upward(ytm-rich-section-renderer)
+m.youtube.com##ytm-shorts-lockup-view-model:upward(grid-shelf-view-model)
+m.youtube.com##ytm-shorts-lockup-view-model-v2:upward(ytm-rich-section-renderer)
+m.youtube.com##ytm-shorts-lockup-view-model-v2:upward(grid-shelf-view-model)
+m.youtube.com##ytm-shorts-lockup-view-model
+m.youtube.com##ytm-shorts-lockup-view-model-v2
+m.youtube.com##ytm-rich-section-renderer:has(ytm-reel-shelf-renderer)
+
+! ---------- MOBILE: items linking to /shorts/ ----------
+m.youtube.com##ytm-video-with-context-renderer:has(a[href^="/shorts/"])
+m.youtube.com##ytm-compact-video-renderer:has(a[href^="/shorts/"])
+m.youtube.com##ytm-rich-item-renderer:has(a[href^="/shorts/"])
+m.youtube.com##ytm-item-section-renderer:has(a[href^="/shorts/"])
+
+! ---------- MOBILE: bottom navigation bar ----------
+m.youtube.com##ytm-pivot-bar-item-renderer:has(.pivot-shorts)
+m.youtube.com##ytm-pivot-bar-item-renderer:has-text(/^Shorts$/)
+
+! ---------- BOTH: channel tabs and filter chips ----------
+youtube.com##yt-tab-shape[tab-title="Shorts"]
+youtube.com##tp-yt-paper-tab:has-text(/^Shorts$/)
+youtube.com##yt-chip-cloud-chip-renderer:has-text(/^Shorts$/i)
+youtube.com##ytm-chip-cloud-chip-renderer:has([aria-label="Shorts"])
+youtube.com##ytm-chip-cloud-chip-renderer:has-text(/^Shorts$/)
+
+! =====================================================================
+! PLAYABLES (YouTube games)
+! =====================================================================
+youtube.com##mini-game-card-view-model
+youtube.com##ytd-rich-section-renderer:has(mini-game-card-view-model)
+youtube.com##ytm-rich-section-renderer:has(mini-game-card-view-model)
+youtube.com##grid-shelf-view-model:has(mini-game-card-view-model)
+youtube.com##ytd-rich-item-renderer:has(a[href^="/playables"])
+youtube.com##yt-lockup-view-model:has(a[href^="/playables"])
+
+! Sidebar / navigation entry
+youtube.com##ytd-guide-entry-renderer:has(a[href^="/playables"])
+youtube.com##ytd-mini-guide-entry-renderer:has(a[href^="/playables"])
+youtube.com##ytm-pivot-bar-item-renderer:has-text(/^Playables$/)
+
+! Block the Playables pages themselves
+||youtube.com/playables$document
+||youtube.com/playables/$document
+
+! =====================================================================
+! AI FEATURES ON VIDEOS
+! =====================================================================
+! "Ask" button, AI summaries, "Ask YouTube" in search, AI prompts in the feed
+youtube.com##[aria-label="Ask YouTube"]
+youtube.com#?##flexible-item-buttons > .ytd-menu-renderer > .ytd-menu-renderer:has-text("Ask")
+youtube.com#?##header > .ytd-expandable-metadata-renderer:has-text("Summary")
+youtube.com#?#.ytd-video-renderer.style-scope > .ytd-expandable-metadata-renderer.style-scope:has-text(Summary)
+youtube.com##yt-video-description-youchat-section-view-model
+youtube.com##ytd-talk-to-recs-flow-renderer
+m.youtube.com##.engagement-panel-section-list-footer-wrapper
+! Unverified: newer button markup for "Ask"
+youtube.com##yt-button-view-model:has-text(/^Ask$/)
+youtube.com##button-view-model:has(button[aria-label="Ask"])
+
+! =====================================================================
+! AUTO-DUBBED AUDIO (needs "Allow custom filters requiring trust")
+! =====================================================================
+youtube.com##+js(json-edit, ..adaptiveFormats.*[?.audioTrack.isAutoDubbed])
+youtube.com##+js(json-edit-xhr-response, ..adaptiveFormats.*[?.audioTrack.isAutoDubbed], propsToMatch, /youtubei)
+youtube.com##+js(json-edit-fetch-response, ..adaptiveFormats.*[?.audioTrack.isAutoDubbed], propsToMatch, /youtubei)
+youtube.com##+js(rpnt, script, (function serverContract(), window.ytInitialPlayerResponse=JSON.parse(JSON.stringify(window.ytInitialPlayerResponse));(function serverContract(), sedCount, 1)
+
+! =====================================================================
+! PREMIUM UPSELLS AND PROMO BANNERS
+! =====================================================================
+youtube.com##ytd-statement-banner-renderer
+youtube.com##ytd-banner-promo-renderer
+youtube.com##ytd-primetime-promo-renderer
+youtube.com##ytd-mealbar-promo-renderer
+youtube.com##yt-mealbar-promo-renderer
+youtube.com##.yt-mealbar-promo-renderer
+youtube.com##ytm-mealbar-promo-renderer
+youtube.com###mealbar\:3 > ytm-mealbar.mealbar-promo-renderer
+youtube.com###premium-upsell-link
+youtube.com##ytd-guide-entry-renderer:has(a[href^="/premium"])
+youtube.com##ytd-guide-entry-renderer:has(a[title="YouTube Premium"])
+
+! =====================================================================
+! SHOPPING AND MERCH
+! =====================================================================
+youtube.com##ytd-merch-shelf-renderer
+youtube.com##ytm-merch-shelf-renderer
+youtube.com##ytd-product-list-renderer
+youtube.com##ytm-product-list-renderer
+! "View products" badge on the player
+youtube.com##.ytp-suggested-action-badge
+youtube.com##.ytp-suggested-action-badge-expanded
+! Unverified: product items in search/feed, channel Store tab
+youtube.com##ytd-shelf-renderer:has(ytd-product-item-renderer)
+youtube.com##yt-tab-shape[tab-title="Store"]
+youtube.com##yt-tab-shape[tab-title="Mağaza"]
