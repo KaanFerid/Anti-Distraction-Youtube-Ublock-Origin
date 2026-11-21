@@ -100,7 +100,3 @@ This list builds on the work of others:
 - [Fanboy's Anti-AI Suggestion List](https://github.com/easylist/easylist/blob/master/fanboy-addon/fanboy_ai_suggestions.txt) ([CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)) for several YouTube AI selectors.
 - The uBlock Origin community for the auto-dub scriptlet rules.
 - Other community YouTube lists, for the Premium promo and merch selectors.
-
-## License
-
-See the [LICENSE](LICENSE) file. Selectors adapted from the lists credited above remain subject to their original licenses.
