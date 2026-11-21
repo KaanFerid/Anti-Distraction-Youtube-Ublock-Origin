@@ -1,6 +1,5 @@
 ! Title: YouTube cleanup (Shorts, Playables, AI features, Premium upsells, merch) - desktop + mobile web
 ! Paste into uBlock Origin > Dashboard > My filters, then click "Apply changes".
-! The auto-dub section needs: Settings > "Allow custom filters requiring trust".
 
 ! =====================================================================
 ! SHORTS
@@ -103,14 +102,6 @@ m.youtube.com##.engagement-panel-section-list-footer-wrapper
 ! Unverified: newer button markup for "Ask"
 youtube.com##yt-button-view-model:has-text(/^Ask$/)
 youtube.com##button-view-model:has(button[aria-label="Ask"])
-
-! =====================================================================
-! AUTO-DUBBED AUDIO (needs "Allow custom filters requiring trust")
-! =====================================================================
-youtube.com##+js(json-edit, ..adaptiveFormats.*[?.audioTrack.isAutoDubbed])
-youtube.com##+js(json-edit-xhr-response, ..adaptiveFormats.*[?.audioTrack.isAutoDubbed], propsToMatch, /youtubei)
-youtube.com##+js(json-edit-fetch-response, ..adaptiveFormats.*[?.audioTrack.isAutoDubbed], propsToMatch, /youtubei)
-youtube.com##+js(rpnt, script, (function serverContract(), window.ytInitialPlayerResponse=JSON.parse(JSON.stringify(window.ytInitialPlayerResponse));(function serverContract(), sedCount, 1)
 
 ! =====================================================================
 ! PREMIUM UPSELLS AND PROMO BANNERS
