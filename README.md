@@ -39,20 +39,6 @@ If nothing happens (for example, because several content blockers are installed)
 
 If you don't want to subscribe to a list, open the Dashboard, go to **My filters**, paste the contents of [`youtube-cleanup-filters.txt`](youtube-cleanup-filters.txt), and click **Apply changes**. You won't get automatic updates this way.
 
-### Auto-dub rules and the "requires trusted source" message
-
-The auto-dub section uses scriptlets that may need to be trusted. If uBlock Origin shows *"Invalid filter: Filter requires trusted source"* for those lines:
-
-- **Subscribed list:** open the Dashboard → **Settings**, turn on **I am an advanced user**, click the gear icon next to it to open the advanced settings, and add this to `trustedListPrefixes`:
-
-  ```
-  https://raw.githubusercontent.com/KaanFerid/Anti-Distraction-Youtube-Ublock-Origin/
-  ```
-
-- **"My filters":** turn on **Allow custom filters requiring trust** in uBlock Origin's settings.
-
-Everything else in the list works without trust. Only trust lists you have read and are comfortable with, since trusted filters can run code on web pages.
-
 ## Features
 
 | What | Details |
@@ -60,7 +46,6 @@ Everything else in the list works without trust. Only trust lists you have read 
 | **YouTube Shorts** | Removed everywhere: home feed, search, subscriptions, channel pages, the watch-page sidebar, the sidebar and bottom navigation bar entries, the Shorts tab and filter chip. Direct `/shorts/` links are blocked. |
 | **Playables** | Game cards and shelves, the sidebar entry, and the `/playables` pages. |
 | **AI features** | The "Ask" button, AI video summaries, "Ask YouTube" in search, and AI prompts in the feed. |
-| **Auto-dubbed audio** | Strips auto-dubbed audio tracks so videos play in their original language (needs trust, see above). |
 | **Premium upsells and promo banners** | Premium banners and pop-ups, promo bars, and the Premium entry in the sidebar. |
 | **Shopping and merch** | Merch and product shelves, the "View products" badge on the player, and the channel Store tab. |
 
